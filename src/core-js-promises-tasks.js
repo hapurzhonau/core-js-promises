@@ -61,7 +61,7 @@ async function getPromiseResult(source) {
  * [Promise.reject(1), Promise.reject(2), Promise.reject(3)]    => Promise rejected
  */
 function getFirstResolvedPromiseResult(promises) {
-  return Promise.race(promises).then();
+  return Promise.any(promises).then();
 }
 
 /**
@@ -83,8 +83,8 @@ function getFirstResolvedPromiseResult(promises) {
  * [promise3, promise6, promise2] => Promise rejected with 2
  * [promise3, promise4, promise6] => Promise rejected with 6
  */
-function getFirstPromiseResult(/* promises */) {
-  throw new Error('Not implemented');
+function getFirstPromiseResult(promises) {
+  return Promise.race(promises).then();
 }
 
 /**
